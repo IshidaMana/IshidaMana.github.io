@@ -1,0 +1,764 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #efefef;
+}
+
+body #loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #efefef;
+  z-index: 10;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+body #loading #spinner {
+  font-size: 70px;
+  width: 1em;
+  height: 1em;
+  -webkit-transition: 1s;
+  transition: 1s;
+  margin: 50vh auto;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+
+body #loading #spinner .fas {
+  color: #a0a0a0;
+}
+
+body #loading.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+body #loading.loaded #spinner {
+  opacity: 0;
+}
+
+body header #header {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 610px;
+}
+
+@media (max-width: 600px) {
+  body header #header {
+    height: 100vh;
+  }
+}
+
+body header #header #main-title {
+  display: inline-block;
+  line-height: 1em;
+  margin: 90px 0 0 0;
+  font-size: 45px;
+  color: #a0a0a0;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  margin-left: 10px;
+  position: relative;
+  background-color: #efefef;
+  padding-bottom: 2px;
+  cursor: default;
+  z-index: 3;
+}
+
+body header #header #main-title::before {
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  right: 0;
+  content: "";
+  height: 4px;
+  background-color: #a0a0a0;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: left center;
+          transform-origin: left center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 3px;
+}
+
+body header #header #main-title::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  content: "石田 末那";
+  font-size: 34px;
+  color: #a0a0a0;
+  -webkit-transform: translateX(-50%) translateY(-20%);
+          transform: translateX(-50%) translateY(-20%);
+  -webkit-transition: 0.5s 0.2s ease-in-out;
+  transition: 0.5s 0.2s ease-in-out;
+  opacity: 0;
+}
+
+body header #header #main-title.load-title-anime::before, body header #header #main-title:hover::before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+body header #header #main-title.load-title-anime::after, body header #header #main-title:hover::after {
+  -webkit-transform: translateX(-50%) translateY(20%);
+          transform: translateX(-50%) translateY(20%);
+  opacity: 1;
+}
+
+@media (max-width: 1000px) {
+  body header #header #main-title {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  body header #header #main-title {
+    margin-top: 50vh;
+    -webkit-transform: translateY(-1em);
+            transform: translateY(-1em);
+    font-size: 35px;
+    background-color: transparent;
+  }
+  body header #header #main-title::before {
+    height: 3.5px;
+  }
+  body header #header #main-title::after {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 400px) {
+  body header #header #main-title {
+    font-size: 30px;
+  }
+  body header #header #main-title::before {
+    height: 3px;
+  }
+  body header #header #main-title::after {
+    font-size: 22px;
+  }
+}
+
+body header #header #main-imgs {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 550px;
+  height: 480px;
+  background-color: #caebf2;
+  border-radius: 3px;
+  z-index: 1;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 8px 2px #a0a0a083;
+          box-shadow: 0 0 8px 2px #a0a0a083;
+  cursor: pointer;
+}
+
+body header #header #main-imgs #imgs {
+  width: 1650px;
+  height: calc(100% - 90px);
+  margin: 45px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+body header #header #main-imgs #imgs div {
+  width: calc(100% - 90px);
+  height: 100%;
+  margin: 0 45px;
+  position: relative;
+}
+
+body header #header #main-imgs #imgs div::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-align: center;
+  z-index: 1;
+  color: #FF3B3F;
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+body header #header #main-imgs #imgs div img {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+body header #header #main-imgs #imgs div.hover-img::before {
+  opacity: 1;
+}
+
+body header #header #main-imgs #imgs div.hover-img img {
+  opacity: 0.4;
+}
+
+body header #header #main-imgs #imgs .profile-img::before {
+  content: "Profile";
+}
+
+body header #header #main-imgs #imgs .work-img::before {
+  content: "Work";
+}
+
+body header #header #main-imgs #imgs .contact-img::before {
+  content: "Contact";
+}
+
+@media (max-width: 1000px) {
+  body header #header #main-imgs {
+    top: 105px;
+    height: 435px;
+  }
+}
+
+@media (max-width: 600px) {
+  body header #header #main-imgs {
+    display: none;
+  }
+}
+
+body header #header #main-menu {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+body header #header #main-menu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body header #header #main-menu ul li {
+  margin-right: 10px;
+}
+
+body header #header #main-menu ul li:last-child {
+  margin-right: 0;
+}
+
+body header #header #main-menu ul li .item {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+  text-decoration: none;
+  color: #a0a0a0;
+  font-weight: bold;
+  padding: 0.3em 1em 0.8em 1em;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body header #header #main-menu ul li .item.add-color {
+  color: #FF3B3F;
+}
+
+@media (max-width: 600px) {
+  body header #header #main-menu ul li .item {
+    font-size: 10px;
+  }
+}
+
+body header #header #main-menu ul li .far {
+  color: #a0a0a0;
+  font-size: 20px;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  display: none;
+  margin-bottom: 0.1em;
+}
+
+@media (max-width: 600px) {
+  body header #header #main-menu {
+    position: fixed;
+    top: 20px;
+    right: 0;
+    z-index: 9;
+    height: 140px;
+    border-radius: 3px 0 0 3px;
+  }
+  body header #header #main-menu ul {
+    display: block;
+  }
+  body header #header #main-menu ul li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0.3em 0.5em 0.2em 0.3em;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+  }
+  body header #header #main-menu ul li:last-child {
+    margin-right: 0.5em;
+  }
+  body header #header #main-menu ul li .item {
+    text-align: right;
+    padding-left: 0;
+  }
+  body header #header #main-menu ul li .far {
+    display: inline-block;
+  }
+  body header #header #main-menu ul li.add-color .item {
+    color: #FF3B3F;
+  }
+  body header #header #main-menu ul li.add-color .far {
+    color: #FF3B3F;
+  }
+}
+
+body main {
+  background-color: #fff;
+  color: #a0a0a0;
+}
+
+body main div {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+body main div section {
+  padding: 50px 10px 70px 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  body main div section {
+    padding: 25px 10px 35px 10px;
+  }
+}
+
+body main div section h1 {
+  display: inline-block;
+  font-size: 60px;
+  color: #a0a0a0;
+  opacity: 0.5;
+  margin: 0;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 600px) {
+  body main div section h1 {
+    font-size: 50px;
+  }
+}
+
+body main div #profile #profile-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 10px;
+}
+
+body main div #profile #profile-box #profile-box-text {
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+  padding: 5px 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0 0 8px 2px #a0a0a083;
+          box-shadow: 0 0 8px 2px #a0a0a083;
+  border-radius: 3px;
+}
+
+body main div #profile #profile-box #profile-box-text h2 {
+  letter-spacing: 0.05em;
+  padding: 0.5em 0;
+  font-size: 25px;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  body main div #profile #profile-box #profile-box-text h2 {
+    font-size: 22px;
+  }
+}
+
+body main div #profile #profile-box #profile-box-text p {
+  line-height: 1.8em;
+  font-size: 18px;
+  margin: 0.5em 0;
+}
+
+body main div #profile #profile-box #profile-box-text p span {
+  display: inline-block;
+  line-height: 1.2em;
+  border-bottom: 1px solid #a0a0a0;
+  margin-right: 0.3em;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body main div #profile #profile-box #profile-box-text p span.hover-city {
+  color: #FF3B3F;
+  border-bottom: 1px solid #FF3B3F;
+}
+
+@media (max-width: 600px) {
+  body main div #profile #profile-box #profile-box-text p {
+    font-size: 15px;
+  }
+}
+
+body main div #profile #profile-box #profile-box-map {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+  height: 280px;
+}
+
+body main div #profile #profile-box #profile-box-map div {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 280px;
+  margin: 0 0 0 30px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  border-radius: 3px;
+}
+
+@media (max-width: 1000px) {
+  body main div #profile #profile-box {
+    display: inline-block;
+    width: 100%;
+  }
+  body main div #profile #profile-box #profile-box-text {
+    max-width: 900px;
+  }
+  body main div #profile #profile-box #profile-box-map {
+    max-width: 600px;
+    height: 280px;
+  }
+  body main div #profile #profile-box #profile-box-map div {
+    margin: 15px 0 0 0;
+  }
+}
+
+body main div #work {
+  background-color: #efefef;
+  margin: 0 -30px;
+  padding: 50px 45px 70px 45px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 8px 2px #a0a0a083;
+          box-shadow: 0 0 8px 2px #a0a0a083;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body main div #work #work-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+body main div #work #work-box div {
+  -webkit-box-flex: 5;
+      -ms-flex: 5;
+          flex: 5;
+  padding: 0 10px 10px 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body main div #work #work-box div h2 {
+  letter-spacing: 0.05em;
+  margin: 0.5em 0 0.5em -15px;
+  color: #a0a0a0;
+  font-size: 25px;
+}
+
+@media (max-width: 600px) {
+  body main div #work #work-box div h2 {
+    font-size: 22px;
+  }
+}
+
+body main div #work #work-box div span {
+  display: inline-block;
+  text-decoration: none;
+  color: #a0a0a0;
+  margin: 0 0 0.8em 0.1em;
+  font-size: 18px;
+  border-bottom: 1px solid #a0a0a0;
+  font-weight: bold;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@media (max-width: 600px) {
+  body main div #work #work-box div span {
+    font-size: 15px;
+  }
+}
+
+body main div #work #work-box div p {
+  line-height: 1.8em;
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  body main div #work #work-box div p {
+    font-size: 15px;
+  }
+}
+
+body main div #work #work-box #work-box-1 {
+  border-right: 1px dashed #a0a0a0;
+  padding-right: 30px;
+}
+
+body main div #work #work-box #work-box-1 #work-video {
+  max-width: 500px;
+  padding: 15px 0 0 0;
+}
+
+body main div #work #work-box #work-box-1 #work-video video {
+  display: inline-block;
+  width: 100%;
+  border-radius: 3px;
+  outline: none;
+  -webkit-box-shadow: 0 0 8px 2px #a0a0a083;
+          box-shadow: 0 0 8px 2px #a0a0a083;
+}
+
+body main div #work #work-box #work-box-2 {
+  padding-left: 40px;
+}
+
+@media (max-width: 1000px) {
+  body main div #work #work-box {
+    display: inline-block;
+  }
+  body main div #work #work-box #work-box-1 {
+    border-right: none;
+    border-bottom: 1px dashed #a0a0a0;
+    padding-right: 10px;
+    padding-bottom: 40px;
+  }
+  body main div #work #work-box #work-box-2 {
+    padding-left: 10px;
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 1000px) {
+  body main div #work {
+    margin: 0;
+    padding: 50px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  body main div #work {
+    margin: 0;
+    padding: 25px 10px 35px 10px;
+  }
+}
+
+body main div #contact {
+  padding-bottom: 100px;
+}
+
+body main div #contact #contact-box {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body main div #contact #contact-box #contact-box-text {
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+  padding: 10px;
+}
+
+body main div #contact #contact-box #contact-box-text p {
+  line-height: 1.8em;
+  font-size: 18px;
+  margin: 0.5em 0 1.5em 0;
+}
+
+@media (max-width: 600px) {
+  body main div #contact #contact-box #contact-box-text p {
+    font-size: 15px;
+  }
+}
+
+body main div #contact #contact-box #contact-box-text a {
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  max-width: 450px;
+  font-size: 20px;
+  text-align: center;
+  color: #fff;
+  background-color: #a0a0a0;
+  font-weight: bold;
+  letter-spacing: 0.07em;
+  padding: 0.3em 1em;
+  border-radius: 6px;
+  margin: 1.8em 0;
+}
+
+body main div #contact #contact-box #contact-box-text a.hover-mail-link {
+  -webkit-box-shadow: 0 0 8px 2px #a0a0a0;
+          box-shadow: 0 0 8px 2px #a0a0a0;
+  background-color: #FF3B3F;
+}
+
+body main div #contact #contact-box #contact-box-text a .fab {
+  margin-right: 0.2em;
+}
+
+@media (max-width: 600px) {
+  body main div #contact #contact-box #contact-box-text a {
+    font-size: 17px;
+  }
+}
+
+body main div #contact #contact-box #contact-box-text #twitter-link.hover-twitter-link {
+  -webkit-box-shadow: 0 0 8px 2px #a0a0a0;
+          box-shadow: 0 0 8px 2px #a0a0a0;
+  background-color: #1DA1F2;
+}
+
+body main div #contact #contact-box #contact-box-text img {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px 0 0 10px;
+}
+
+@media (max-width: 600px) {
+  body main div #contact #contact-box #contact-box-text img {
+    display: none;
+  }
+}
+
+body main div #contact #contact-box #contact-box-twitter {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  body main div #contact #contact-box {
+    display: inline-block;
+    width: 100%;
+  }
+  body main div #contact #contact-box #contact-box-text {
+    text-align: center;
+  }
+  body main div #contact #contact-box #contact-box-text a {
+    margin: 1.8em auto;
+  }
+  body main div #contact #contact-box #contact-box-twitter {
+    margin-top: 20px;
+  }
+}
+
+body footer #footer {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  height: 3em;
+}
+
+body footer #footer #back-to-top {
+  position: absolute;
+  top: -50%;
+  right: 50%;
+  color: #a0a0a0;
+  font-size: 15px;
+  -webkit-box-shadow: 0 0 8px 1px #a0a0a083;
+          box-shadow: 0 0 8px 1px #a0a0a083;
+  background-color: #fff;
+  display: inline-block;
+  text-decoration: none;
+  padding: 1em;
+  border-radius: 3px;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+}
+
+@media (max-width: 600px) {
+  body footer #footer #back-to-top {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  body footer #footer #back-to-top {
+    font-size: 10px;
+  }
+}
+
+body footer #footer p {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  margin: 1em;
+  font-size: 15px;
+  color: #a0a0a0;
+}
+
+@media (max-width: 600px) {
+  body footer #footer p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  body footer #footer p {
+    font-size: 10px;
+    margin-top: 1.5em;
+  }
+}
+
+@media (max-width: 600px) {
+  body footer #footer {
+    height: 2.5em;
+  }
+}
+/*# sourceMappingURL=style.css.map */

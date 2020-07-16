@@ -1,0 +1,34 @@
+$cRed: #FF3B3F;
+$cRed2: #ff3b3e81;
+$cBack: #efefef;
+$cWhite: #fff;
+$cWhite2: rgba(255, 255, 255, 0.493);
+$cGray: #a0a0a0;
+$cGray2: #a0a0a083;
+$cSky: #caebf2;
+$cTwitter: #1DA1F2;
+
+//レスポンシブ
+$tab: 1000px;  
+$sp: 600px;
+$xs: 400px;
+
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @media (max-width: ($xs)) {
+    @content;
+  }
+}
+// @include sp {
+//   font-size: 18px - 2;
+// };

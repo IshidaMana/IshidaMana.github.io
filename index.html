@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Web初心者 Ishida Mana のポートフォリオサイトです。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./imgs/like.svg"></link>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Ishida Mana | Portfolio</title>
+</head>
+<body>
+  <div id="loading">
+    <div id="spinner">
+      <i class="fas fa-spinner fa-pulse"></i>
+    </div>
+  </div>
+  <header>
+    <div id="header">
+      <h1 id="main-title">ISHIDA MANA</h1>
+      <div id="main-imgs">
+        <div id="imgs">
+          <div class="profile-img">
+            <img src="imgs/profile.svg">
+          </div>
+          <div class="work-img">
+            <img src="imgs/work.svg">
+          </div>
+          <div class="contact-img">
+            <img src="imgs/contact.svg">
+          </div>
+        </div>
+      </div>    
+      <nav id="main-menu">
+        <ul>
+          <li>
+            <i class="far fa-user"></i>
+            <a class="item" href="#profile">プロフィール</a>
+          </li>
+          <li>
+            <i class="far fa-file-code"></i>
+            <a class="item" href="#work">作ったもの</a>
+          </li>
+          <li>
+            <i class="far fa-envelope"></i>
+            <a class="item" href="#contact">コンタクト</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div>
+      <section id="profile">
+        <h1>Profile</h1>
+        <div id="profile-box">
+          <div id="profile-box-text">
+            <h2>Ishida Mana</h2>
+            <p>
+              1993年生まれ。<span id="move-to-city">大阪府堺市</span>在住。<br>
+              2016年に神戸芸術工科大学を卒業。<br>
+              その後、ホテルのフロントや旅行商品の造成、航空会社や代理店にて航空券手配業務を経験。<br>
+              趣味は映画・海外ドラマ・ブロードウェイミュージカルの鑑賞、国内外への旅行。
+            </p>
+          </div>
+          <div id="profile-box-map">
+            <div></div>
+          </div>
+        </div>
+      </section>
+      <section id="work">
+        <h1>Works</h1>
+        <div id="work-box">
+          <div id="work-box-1">
+            <h2>『旅のしおり (旧)』</h2>
+            <p>旅行用のしおりが作成出来るサイトです。<br>
+              途中からVue.jsでの作成に移行したため、キャプチャ動画のみの公開になります。</p>
+              <p>使用言語：HTML/SASS/JavaScript</p>
+              <div id="work-video">
+                <video src="imgs/shiori.mp4" controls></video>
+              </div>
+            </div>
+          <div id="work-box-2">
+            <h2>『旅のしおり』</h2>
+            <span>→ 現在作成中</span>
+            <p>旅行用のしおりが作成出来るサイトです。<br>
+              現在作成中のため、公開までもうしばらくお待ちください。</p>
+            <p>使用言語：HTML/SASS/Vue.js</p>
+          </div>
+        </div>
+      </section>
+      <section id="contact">
+        <h1>Contact</h1>
+        <div id="contact-box">
+          <div id="contact-box-text">
+            <p>お問い合わせは下記からお願いいたします。</p>
+            <a id="mail-link" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfrNN6YCJcfjLWDPLYmyVy0HQCcCh-vMquowxHGIT94FU5E-w/viewform?usp=sf_link">メールでのお問い合わせ</a>
+            <a id="twitter-link" target="_blank" href="https://twitter.com/Mana79944122"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+            <img src="imgs/tweet.svg" alt="tweet">
+          </div>
+          <div id="contact-box-twitter">
+            <a class="twitter-timeline" data-width="400" data-height="480" data-theme="light" data-chrome=”noheadernoscrollbarnofooternoborders” href="https://twitter.com/Mana79944122?ref_src=twsrc%5Etfw">Tweets by Mana79944122</a> 
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div id="footer">
+      <a href="#" id="back-to-top">トップへ戻る</a>
+      <p>© 2020 Ishida Mana</p>
+    </div>
+  </footer>
+
+<!-- Google Map API 設定 -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwe3RJIv9tYyi0JnBvnQHXKMlxuYif4Bk&callback=initMap" async defer></script>
+  <script>
+  //google MAP
+  const mapBox = document.querySelector('#profile-box-map > div');
+  const moveToCity = document.querySelector('#move-to-city');
+
+//mapアクション
+  function initMap() {
+
+    let map;
+    const style = [
+      {
+        stylers: [
+        { hue: "#FF3B3F" },
+        { saturation: 30 },
+        { gamma: 1.8 },
+        { invert_lightness: false},
+        { visibility: "on"}
+      ]
+    }
+  ];
+
+  const sakaishi = function() {
+      if (window.innerWidth < 1000) {
+          return {lat:34.47777889869553, lng:135.48259685654983};
+        } else {
+          return {lat:34.56377158901004, lng:135.6459948375};      
+        };
+    }
+    
+    map = new google.maps.Map(mapBox, {
+      center: sakaishi(),
+      zoom: 10,
+      styles: style, 
+      disableDefaultUI: true,
+      draggable: true,
+      scrollwheel: true
+    });
+
+    function moveMap() {
+      map.setCenter(sakaishi());
+      map.setZoom(10);
+    }
+
+//textアクション
+    moveToCity.addEventListener('click', e => {
+      e.preventDefault();
+      moveMap();
+    });
+
+    function addClass(el, cl) {
+      el.classList.add(cl);
+    };
+    function removeClass(el, cl) {
+      el.classList.remove(cl);
+    };
+
+    moveToCity.addEventListener('mouseover', () => {
+      addClass(moveToCity, 'hover-city');
+    });
+    moveToCity.addEventListener('touchstart', () => {
+      addClass(moveToCity, 'hover-city');
+    });
+    moveToCity.addEventListener('mouseout', () => {
+      removeClass(moveToCity, 'hover-city');
+    });
+    moveToCity.addEventListener('touchend', () => {
+      removeClass(moveToCity, 'hover-city');
+    });
+
+    // map.addListener('drag', () => {
+    //   let aaa = map.getCenter();
+    //   let lat = aaa.lat();
+    //   let lng = aaa.lng();
+    //   console.log(lat, lng);
+    // });
+  }
+  </script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script src="main.js"></script>
+</body>
+</html>

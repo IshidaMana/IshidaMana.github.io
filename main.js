@@ -178,6 +178,9 @@
       addClass(el, cl);
     });
     el.addEventListener('touchstart', () => {
+      el.addEventListener('mouseover', () => {
+        removeClass(el, cl);
+      });
       addClass(el, cl);
     });
     el.addEventListener('mouseout', () => {

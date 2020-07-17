@@ -175,6 +175,9 @@
       addClass(moveToCity, 'hover-city');
     });
     moveToCity.addEventListener('touchstart', () => {
+      moveToCity.addEventListener('mouseover', () => {
+        removeClass(moveToCity, 'hover-city');
+      });
       addClass(moveToCity, 'hover-city');
     });
     moveToCity.addEventListener('mouseout', () => {

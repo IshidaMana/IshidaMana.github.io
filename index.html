@@ -136,16 +136,10 @@
     }
   ];
 
-  const sakaishi = function() {
-      if (window.innerWidth < 1000) {
-          return {lat:34.47777889869553, lng:135.48259685654983};
-        } else {
-          return {lat:34.56377158901004, lng:135.6459948375};      
-        };
-    }
+  const sakaishi = {lat:34.52777889869553, lng:135.58259685654983};
     
     map = new google.maps.Map(mapBox, {
-      center: sakaishi(),
+      center: sakaishi,
       zoom: 10,
       styles: style, 
       disableDefaultUI: true,
@@ -154,7 +148,7 @@
     });
 
     function moveMap() {
-      map.setCenter(sakaishi());
+      map.setCenter(sakaishi);
       map.setZoom(10);
     }
 

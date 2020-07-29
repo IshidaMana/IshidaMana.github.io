@@ -24,7 +24,6 @@
   let totalHeight1 = headerHeight + profileHeight; 
   let totalHeight2 = totalHeight1 + workHeight; 
   let scrollY = [headerHeight, totalHeight1, totalHeight2];
-  console.log(profileHeight, workHeight);
 
 
   window.addEventListener('resize', function() {

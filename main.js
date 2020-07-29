@@ -12,7 +12,6 @@
   const loadPage = document.querySelector('#loading');
   const profileBox = document.querySelector('#profile');
   const workBox = document.querySelector('#work');
-  // const contactBox = document.querySelector('#contact');
   const header = document.querySelector('header');
   const mailLink = document.querySelector('#mail-link');
   const twtLink = document.querySelector('#twitter-link');
@@ -24,6 +23,7 @@
   let totalHeight1 = headerHeight + profileHeight; 
   let totalHeight2 = totalHeight1 + workHeight; 
   let scrollY = [headerHeight, totalHeight1, totalHeight2];
+  console.log(profileHeight, workHeight);
 
 
   window.addEventListener('resize', function() {
@@ -34,7 +34,6 @@
     totalHeight1 = headerHeight + profileHeight;
     totalHeight2 = totalHeight1 + workHeight; 
     scrollY = [headerHeight, totalHeight1, totalHeight2];
-    console.log(profileHeight, workHeight);
   });
 
 
@@ -113,7 +112,6 @@
         
         itemParent.addEventListener('click', () => {
           window.scrollTo(0, `${scrollY[index]}`);
-          console.log('aaa');
         });
       };
   });

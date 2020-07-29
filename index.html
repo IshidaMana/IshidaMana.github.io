@@ -187,6 +187,11 @@
       removeClass(moveToCity, 'hover-city');
     });
   }
+    
+  // InvalidValueError: initMap is not a functionの対応
+  window.onload = function () {
+    initMap();
+  }
   </script>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script src="main.js"></script>

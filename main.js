@@ -54,13 +54,11 @@
     if(movePage === true) {
       location.href="https://musing-lamport-46bd79.netlify.app/"
     } else {
-      return;
-    }
-
-    mainTitle.classList.add('load-title-anime');
-    setTimeout(() =>{
+      mainTitle.classList.add('load-title-anime');
+      setTimeout(() =>{
       mainTitle.classList.remove('load-title-anime');
     }, 2500);
+    }
   }
 
 
